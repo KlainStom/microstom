@@ -19,7 +19,12 @@ public class Main {
         };
 
         // TODO: 04.08.21 create start.sh or start.bat depending on OS
-        String[] script = LINUX_SCRIPT;
+        String os = "linux";
+        String[] script = new String[2];
+        switch (os) {
+            case "linux": script = LINUX_SCRIPT; break;
+            case "windows": script = WINDOWS_SCRIPT; break;
+        }
 
         File file = new File(script[0]).getAbsoluteFile();
         if (file.isDirectory()) {
@@ -31,6 +36,10 @@ public class Main {
             writer.write(script[1]);
             writer.flush();
             writer.close();
+        }
+
+        switch (os) {
+            case "linux": Runtime.getRuntime().exec("chmod u+x start.sh"); break;
         }
 
         Bootstrap.bootstrap("com.github.saneminestom.MicroStom", args);
