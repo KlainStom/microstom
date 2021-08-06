@@ -4,42 +4,35 @@ import net.minestom.server.Bootstrap;
 import net.minestom.server.MinecraftServer;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        final String[] LINUX_SCRIPT = {
-                "start.sh",
-                "java -Dhost=127.0.0.1 -Dport=25565 -jar micro.jar"
-        };
-        final String[] WINDOWS_SCRIPT = {
-                "start.bat",
-                "java -Dhost=127.0.0.1 -Dport=25565 -jar micro.jar"
-        };
-
         // TODO: 04.08.21 create start.sh or start.bat depending on OS
         String os = "linux";
-        String[] script = new String[2];
+        String filename;
         switch (os) {
-            case "linux": script = LINUX_SCRIPT; break;
-            case "windows": script = WINDOWS_SCRIPT; break;
+            case "linux": filename = "start.sh"; break;
+            case "windows": filename = "start.bat"; break; // TODO: 06.08.21 add windows script
+            default:
+                throw new IllegalStateException("Unexpected value: " + os);
         }
-
-        File file = new File(script[0]).getAbsoluteFile();
+        File file = new File(filename);
         if (file.isDirectory()) {
-            MinecraftServer.LOGGER.warn("Can't create startup script!.");
+            MinecraftServer.LOGGER.warn("Can't create startup script!");
         }
         if (!file.isFile()) {
-            MinecraftServer.LOGGER.info("Create startup script");
-            FileWriter writer = new FileWriter(file);
-            writer.write(script[1]);
-            writer.flush();
-            writer.close();
-        }
-
-        switch (os) {
-            case "linux": Runtime.getRuntime().exec("chmod u+x start.sh"); break;
+            MinecraftServer.LOGGER.info("Create startup script.");
+            Files.copy(
+                    Objects.requireNonNull(Main.class.getClassLoader().getResourceAsStream(filename)),
+                    file.toPath());
+            switch (os) {
+                case "linux": Runtime.getRuntime().exec("chmod u+x start.sh"); break;
+            }
+            System.out.println("Use './start.sh' or 'start.bat' to start the server.");
+            System.exit(0);
         }
 
         Bootstrap.bootstrap("com.github.saneminestom.MicroStom", args);
