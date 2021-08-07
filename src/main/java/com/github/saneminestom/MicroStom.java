@@ -10,6 +10,7 @@ import java.util.Objects;
 
 public class MicroStom {
     public static void main(String[] args) {
+        MinecraftServer.LOGGER.info("Microstom $version");
         String address = Objects.requireNonNull(System.getProperty("host"));
         int port = Integer.parseInt(System.getProperty("port"));
 

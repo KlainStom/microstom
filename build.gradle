@@ -1,5 +1,12 @@
+buildscript {
+    repositories {
+        maven { url 'https://repo.spongepowered.org/maven' }
+    }
+}
+
 plugins {
     id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'net.kyori.blossom' version '1.3.0'
     id 'java'
 }
 
@@ -14,6 +21,10 @@ repositories {
 
 dependencies {
     implementation 'com.github.Minestom:Minestom:new-block-api-SNAPSHOT'
+}
+
+blossom {
+    replaceToken '$version', version
 }
 
 shadowJar {
