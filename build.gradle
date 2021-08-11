@@ -10,8 +10,8 @@ plugins {
     id 'java'
 }
 
-group 'com.github.saneminestom'
-version '1.0'
+group 'com.github.klainstom'
+version '2.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -29,7 +29,7 @@ blossom {
 
 shadowJar {
     manifest {
-        attributes 'Main-Class': 'com.github.saneminestom.Main'
+        attributes 'Main-Class': 'com.github.klainstom.Main'
     }
     archiveBaseName.set("micro")
     archiveClassifier.set('')

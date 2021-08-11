@@ -1,4 +1,4 @@
-package com.github.saneminestom;
+package com.github.klainstom;
 
 import net.minestom.server.Bootstrap;
 import net.minestom.server.MinecraftServer;
@@ -35,6 +35,6 @@ public class Main {
             System.exit(0);
         }
 
-        Bootstrap.bootstrap("com.github.saneminestom.MicroStom", args);
+        Bootstrap.bootstrap("com.github.klainstom.MicroStom", args);
     }
 }
