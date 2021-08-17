@@ -24,15 +24,7 @@ public class Main {
 
         }
 
-        // TODO: 04.08.21 create start.sh or start.bat depending on OS
-        String os = "linux";
-        String filename;
-        switch (os) {
-            case "linux": filename = "start.sh"; break;
-            case "windows": filename = "start.bat"; break; // TODO: 06.08.21 add windows script
-            default:
-                throw new IllegalStateException("Unexpected value: " + os);
-        }
+        String filename = "start.sh";
         File file = new File(filename);
         if (file.isDirectory()) {
             MinecraftServer.LOGGER.warn("Can't create startup script!");
@@ -42,10 +34,8 @@ public class Main {
             Files.copy(
                     Objects.requireNonNull(Main.class.getClassLoader().getResourceAsStream(filename)),
                     file.toPath());
-            switch (os) {
-                case "linux": Runtime.getRuntime().exec("chmod u+x start.sh"); break;
-            }
-            System.out.println("Use './start.sh' or 'start.bat' to start the server.");
+            Runtime.getRuntime().exec("chmod u+x start.sh");
+            System.out.println("Use './start.sh' to start the server.");
             System.exit(0);
         }
 
