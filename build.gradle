@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Minestom:Minestom:new-block-api-SNAPSHOT'
+    implementation 'com.github.Minestom:Minestom:-SNAPSHOT'
 }
 
 blossom {
