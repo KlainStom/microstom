@@ -8,4 +8,4 @@ Microstom is a minecraft server based on [Minestom](https://github.com/Minestom/
 
 Nothing more. Not even a world to join.
 
-Currently using the `new-block-api` branch of minestom. So it's on version 1.17.1
+Currently using the newest version of minestom. So it's on version 1.17.1
