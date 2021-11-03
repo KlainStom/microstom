@@ -16,7 +16,10 @@ import java.io.Reader;
 
 public class Server {
     public static void main(String[] args) {
-        MinecraftServer.LOGGER.info("Microstom $version");
+        MinecraftServer.LOGGER.info("==== VERSIONS ====");
+        MinecraftServer.LOGGER.info("$Name: "+Versions.VERSION);
+        MinecraftServer.LOGGER.info("Minestom: "+Versions.MINESTOM_VERSION);
+        MinecraftServer.LOGGER.info("==================");
 
         Config config = null;
         try {
