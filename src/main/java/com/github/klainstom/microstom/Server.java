@@ -1,4 +1,4 @@
-package com.github.klainstom;
+package com.github.klainstom.microstom;
 
 import com.google.gson.Gson;
 import net.kyori.adventure.text.Component;
@@ -14,7 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-public class MicroStom {
+public class Server {
     public static void main(String[] args) {
         MinecraftServer.LOGGER.info("Microstom $version");
 

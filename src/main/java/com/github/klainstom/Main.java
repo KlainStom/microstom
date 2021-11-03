@@ -39,6 +39,6 @@ public class Main {
             System.exit(0);
         }
 
-        Bootstrap.bootstrap("com.github.klainstom.MicroStom", args);
+        Bootstrap.bootstrap("com.github.klainstom.microstom.Server", args);
     }
 }
