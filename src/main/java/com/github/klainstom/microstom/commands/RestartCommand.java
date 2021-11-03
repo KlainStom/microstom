@@ -6,6 +6,8 @@ import net.minestom.server.command.builder.SimpleCommand;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.IOException;
+
 public class RestartCommand extends SimpleCommand {
     public RestartCommand() {
         super("restart");
@@ -13,9 +15,12 @@ public class RestartCommand extends SimpleCommand {
 
     @Override
     public boolean process(@NotNull CommandSender sender, @NotNull String command, @NotNull String[] args) {
-        // TODO: 03.11.21 write file to signal a restart instead of using unreliable exit codes
         MinecraftServer.stopCleanly();
-        System.exit(99);
+        try {
+            new ProcessBuilder("./start.sh").start();
+        } catch (IOException e) {
+            LOGGER.error("Could not restart server.", e);
+        }
         return true;
     }
 

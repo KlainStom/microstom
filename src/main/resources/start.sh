@@ -1,14 +1,1 @@
-while true ; do
-    java -Xms512M -Xmx2G -jar micro.jar
-    exitcode="$?"
-    if [ $exitcode -ne "99" ]; then
-        echo "
-Server exit code: $exitcode"
-        break
-    fi
-    echo "
-
- === SERVER RESTART ===
-
-"
-done
+java -Xms512M -Xmx2G -jar MicroStom-2.0-SNAPSHOT.jar
