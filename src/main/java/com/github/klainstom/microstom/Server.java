@@ -14,6 +14,7 @@ public class Server {
         Settings.read();
 
         MinecraftServer.LOGGER.info("==== VERSIONS ====");
+        MinecraftServer.LOGGER.info("Java: "+Runtime.version());
         MinecraftServer.LOGGER.info("$Name: "+Versions.VERSION);
         MinecraftServer.LOGGER.info("Minestom: "+Versions.MINESTOM_VERSION);
         MinecraftServer.LOGGER.info("==================");
