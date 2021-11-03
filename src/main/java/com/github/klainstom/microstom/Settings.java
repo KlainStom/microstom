@@ -16,6 +16,7 @@ public class Settings {
     private static SettingsState currentSettings = null;
 
     public static void read() {
+        // TODO: 03.11.21 reload settings every X seconds
         try {
             BufferedReader reader = new BufferedReader(new FileReader(settingsFile));
             currentSettings = gson.fromJson(reader, SettingsState.class);
@@ -43,12 +44,18 @@ public class Settings {
         private final RunMode MODE;
         private final String VELOCITY_SECRET;
 
+        private final boolean PLAYER_RESTART;
+        private final boolean PLAYER_SHUTDOWN;
+
         private SettingsState() {
             this.SERVER_IP = "localhost";
             this.SERVER_PORT = 25565;
 
             this.MODE = RunMode.OFFLINE;
             this.VELOCITY_SECRET = "";
+
+            this.PLAYER_RESTART = false;
+            this.PLAYER_SHUTDOWN = false;
         }
 
     }
@@ -95,4 +102,8 @@ public class Settings {
     public static String getVelocitySecret() {
         return currentSettings.VELOCITY_SECRET;
     }
+
+    public static boolean isAllowPlayerRestart() { return currentSettings.PLAYER_RESTART; }
+
+    public static boolean isAllowPlayerShutdown() { return currentSettings.PLAYER_SHUTDOWN; }
 }

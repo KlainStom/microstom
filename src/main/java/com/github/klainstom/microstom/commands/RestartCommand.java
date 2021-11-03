@@ -1,5 +1,6 @@
 package com.github.klainstom.microstom.commands;
 
+import com.github.klainstom.microstom.Settings;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.command.CommandSender;
 import net.minestom.server.command.builder.SimpleCommand;
@@ -26,7 +27,6 @@ public class RestartCommand extends SimpleCommand {
 
     @Override
     public boolean hasAccess(@NotNull CommandSender sender, @Nullable String commandString) {
-        // TODO: 03.11.21 enable execution for players in settings
-        return sender.isConsole();
+        return sender.isConsole() || Settings.isAllowPlayerRestart();
     }
 }
