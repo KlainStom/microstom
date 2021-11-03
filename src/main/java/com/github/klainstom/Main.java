@@ -10,20 +10,6 @@ import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        File settingsFile = new File("micro.json");
-        if (settingsFile.isDirectory()) {
-            MinecraftServer.LOGGER.error("Can't create settings file!");
-            System.exit(1);
-        }
-        if (!settingsFile.isFile()) {
-            MinecraftServer.LOGGER.info("Create settings file.");
-            Files.copy(
-                    Objects.requireNonNull(Main.class.getClassLoader().
-                            getResourceAsStream(settingsFile.getName())),
-                    settingsFile.toPath());
-
-        }
-
         String filename = "start.sh";
         File file = new File(filename);
         if (file.isDirectory()) {
