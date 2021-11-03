@@ -1,1 +1,1 @@
-java -Xms512M -Xmx2G -jar MicroStom-2.0-SNAPSHOT.jar
+java -Xms512M -Xmx2G -jar ${Name}-${version}.jar

@@ -33,6 +33,11 @@ blossom {
     replaceToken '$minestomVersion', minestomVersion
 }
 
+processResources.expand(
+    'Name': displayName,
+    'version': version
+)
+
 shadowJar {
     manifest.attributes 'Main-Class': 'com.github.klainstom.Main'
     archiveBaseName.set(displayName)
