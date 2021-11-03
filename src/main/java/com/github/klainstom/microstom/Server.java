@@ -1,10 +1,10 @@
 package com.github.klainstom.microstom;
 
+import com.github.klainstom.microstom.commands.Commands;
 import com.google.gson.Gson;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.MinecraftServer;
-import net.minestom.server.command.builder.Command;
 import net.minestom.server.event.player.PlayerLoginEvent;
 import net.minestom.server.extras.MojangAuth;
 import net.minestom.server.extras.bungee.BungeeCordProxy;
@@ -36,17 +36,8 @@ public class Server {
                 event.getPlayer().kick(Component.text("There is no instance available!", NamedTextColor.RED));
         });
 
-        Command restart = new Command("restart");
-        Command stop = new Command("stop", "end");
-
-        restart.setDefaultExecutor((sender, context) -> {
-            MinecraftServer.stopCleanly();
-            System.exit(99);
-        });
-        stop.setDefaultExecutor((sender, context) -> MinecraftServer.stopCleanly());
-
-        MinecraftServer.getCommandManager().register(restart);
-        MinecraftServer.getCommandManager().register(stop);
+        MinecraftServer.getCommandManager().register(Commands.SHUTDOWN);
+        MinecraftServer.getCommandManager().register(Commands.RESTART);
 
         MinecraftServer server = MinecraftServer.init();
 
