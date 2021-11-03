@@ -10,6 +10,9 @@ plugins {
     id 'java'
 }
 
+def displayName = "MicroStom"
+def minestomVersion = "36bcf6972853cf947e5cfe4a58a5af9735756361"
+
 group 'com.github.klainstom'
 version '2.0-SNAPSHOT'
 
@@ -20,20 +23,21 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Minestom:Minestom:-SNAPSHOT'
+    implementation 'com.github.Minestom:Minestom:' + minestomVersion
 }
 
 blossom {
+    replaceToken '$Name', displayName
+    replaceToken '$name', displayName.toLowerCase()
     replaceToken '$version', version
+    replaceToken '$minestomVersion', minestomVersion
 }
 
 shadowJar {
-    manifest {
-        attributes 'Main-Class': 'com.github.klainstom.Main'
-    }
-    archiveBaseName.set("micro")
+    manifest.attributes 'Main-Class': 'com.github.klainstom.Main'
+    archiveBaseName.set(displayName)
     archiveClassifier.set('')
-    archiveVersion.set('')
+    archiveVersion.set(project.version.toString())
 }
 
 test {
