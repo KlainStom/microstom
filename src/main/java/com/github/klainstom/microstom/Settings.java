@@ -16,7 +16,6 @@ public class Settings {
     private static SettingsState currentSettings = null;
 
     public static void read() {
-        // TODO: 03.11.21 reload settings every X seconds
         try {
             BufferedReader reader = new BufferedReader(new FileReader(settingsFile));
             currentSettings = gson.fromJson(reader, SettingsState.class);
