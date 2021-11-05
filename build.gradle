@@ -11,7 +11,7 @@ plugins {
 }
 
 def displayName = "MicroStom"
-def minestomVersion = "36bcf6972853cf947e5cfe4a58a5af9735756361"
+def minestomVersion = "7a4086c889e48ca3912d39345a1b9bbd84ccabe3"
 
 group 'com.github.klainstom'
 version '2.0-SNAPSHOT'
@@ -54,6 +54,6 @@ build {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
