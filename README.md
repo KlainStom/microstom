@@ -1,6 +1,9 @@
 ## Microstom
 Microstom is a minecraft server based on [Minestom](https://github.com/Minestom/Minestom).
 
+### Requirements
+- java 17
+
 ### Features
 - stop/restart command
 - Mojang authentication
