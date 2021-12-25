@@ -11,7 +11,7 @@ plugins {
 }
 
 def displayName = "MicroStom"
-def minestomVersion = "1857393e1da8154dcf015a700c6c75819d684b80"
+def minestomVersion = "e4a141be31913a9a227914d375dd04e4a18e9bc1"
 
 group 'com.github.klainstom'
 version '2.0-SNAPSHOT'
