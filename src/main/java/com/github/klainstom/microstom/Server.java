@@ -12,12 +12,7 @@ import net.minestom.server.extras.velocity.VelocityProxy;
 public class Server {
     public static void main(String[] args) {
         Settings.read();
-
-        MinecraftServer.LOGGER.info("==== VERSIONS ====");
-        MinecraftServer.LOGGER.info("Java: "+Runtime.version());
-        MinecraftServer.LOGGER.info("$Name: "+Versions.VERSION);
-        MinecraftServer.LOGGER.info("Minestom: "+Versions.MINESTOM_VERSION);
-        MinecraftServer.LOGGER.info("==================");
+        Versions.printVersionLines();
 
         MinecraftServer.getGlobalEventHandler().addListener(PlayerLoginEvent.class, event -> {
             if (MinecraftServer.getInstanceManager().getInstances().isEmpty())

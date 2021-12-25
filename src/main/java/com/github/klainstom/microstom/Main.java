@@ -11,11 +11,7 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) throws IOException {
         if (args.length > 0 && args[0].equalsIgnoreCase("-v")) {
-            MinecraftServer.LOGGER.info("==== VERSIONS ====");
-            MinecraftServer.LOGGER.info("Java: "+Runtime.version());
-            MinecraftServer.LOGGER.info("$Name: "+ Versions.VERSION);
-            MinecraftServer.LOGGER.info("Minestom: "+Versions.MINESTOM_VERSION);
-            MinecraftServer.LOGGER.info("==================");
+            Versions.printVersionLines();
             System.exit(0);
         }
 
