@@ -1,6 +1,5 @@
-package com.github.klainstom;
+package com.github.klainstom.microstom;
 
-import com.github.klainstom.microstom.Versions;
 import net.minestom.server.Bootstrap;
 import net.minestom.server.MinecraftServer;
 
