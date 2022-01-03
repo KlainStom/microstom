@@ -43,6 +43,7 @@ shadowJar {
     archiveBaseName.set(displayName)
     archiveClassifier.set('')
     archiveVersion.set(project.version.toString())
+    mergeServiceFiles()
 }
 
 test {
