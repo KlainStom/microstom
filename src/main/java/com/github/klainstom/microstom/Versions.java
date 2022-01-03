@@ -14,6 +14,7 @@ public class Versions {
                 "Java: "+Runtime.version(),
                 "$Name: "+ Versions.VERSION,
                 "Minestom: "+Versions.MINESTOM_VERSION,
+                "Protocol: "+MinecraftServer.PROTOCOL_VERSION,
                 "======================"
         );
     }
