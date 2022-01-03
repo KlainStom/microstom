@@ -11,7 +11,7 @@ Microstom is a minecraft server based on [Minestom](https://github.com/Minestom/
 
 Nothing more. Not even a world to join.
 
-Currently, it uses minecraft protocol version 1.17.1
+Currently, it uses minecraft protocol version 1.18
 
 ### Restarting
 Restarting the server calls the `./start.sh` script.
