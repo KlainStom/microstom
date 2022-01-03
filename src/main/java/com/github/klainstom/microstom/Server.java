@@ -19,10 +19,10 @@ public class Server {
                 event.getPlayer().kick(Component.text("There is no instance available!", NamedTextColor.RED));
         });
 
+        MinecraftServer server = MinecraftServer.init();
+
         MinecraftServer.getCommandManager().register(Commands.SHUTDOWN);
         MinecraftServer.getCommandManager().register(Commands.RESTART);
-
-        MinecraftServer server = MinecraftServer.init();
 
         switch (Settings.getMode()) {
             case OFFLINE:
