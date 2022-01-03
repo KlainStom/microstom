@@ -1,6 +1,5 @@
 package com.github.klainstom.microstom;
 
-import net.minestom.server.Bootstrap;
 import net.minestom.server.MinecraftServer;
 
 import java.io.File;
@@ -30,6 +29,6 @@ public class Main {
             System.exit(0);
         }
 
-        Bootstrap.bootstrap("com.github.klainstom.microstom.Server", args);
+        Server.main(args);
     }
 }
