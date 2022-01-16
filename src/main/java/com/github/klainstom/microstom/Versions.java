@@ -18,10 +18,4 @@ public class Versions {
                 "======================"
         );
     }
-
-    public static void printVersionLines() {
-        for (String line : getVersionLines()) {
-            MinecraftServer.LOGGER.info(line);
-        }
-    }
 }

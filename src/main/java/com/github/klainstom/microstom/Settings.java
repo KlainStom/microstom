@@ -47,12 +47,6 @@ public class Settings {
         );
     }
 
-    public static void printSettingsLines() {
-        for (String line : getSettingsLines()) {
-            MinecraftServer.LOGGER.info(line);
-        }
-    }
-
     private static class SettingsState {
         private final String SERVER_IP;
         private final int SERVER_PORT;
