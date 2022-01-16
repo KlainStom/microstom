@@ -14,12 +14,12 @@ public class Server {
         Settings.read();
         Versions.printVersionLines();
 
+        MinecraftServer server = MinecraftServer.init();
+
         MinecraftServer.getGlobalEventHandler().addListener(PlayerLoginEvent.class, event -> {
             if (MinecraftServer.getInstanceManager().getInstances().isEmpty())
                 event.getPlayer().kick(Component.text("There is no instance available!", NamedTextColor.RED));
         });
-
-        MinecraftServer server = MinecraftServer.init();
 
         MinecraftServer.getCommandManager().register(Commands.SHUTDOWN);
         MinecraftServer.getCommandManager().register(Commands.RESTART);
