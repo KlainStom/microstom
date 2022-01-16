@@ -62,9 +62,6 @@ public class Main {
         }
 
         server.start(Settings.getServerIp(), Settings.getServerPort());
-        MinecraftServer.LOGGER.info("==== SETTINGS ====");
-        MinecraftServer.LOGGER.info("Mode: {}", Settings.getMode());
-        MinecraftServer.LOGGER.info("Address: {}:{}", Settings.getServerIp(), Settings.getServerPort());
-        MinecraftServer.LOGGER.info("==================");
+        Settings.printSettingsLines();
     }
 }
