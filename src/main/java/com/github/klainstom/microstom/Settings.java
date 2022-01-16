@@ -40,10 +40,10 @@ public class Settings {
 
     public static List<String> getSettingsLines() {
         return List.of(
-                "==== SETTINGS ====",
+                "====== SETTINGS ======",
                 "Mode: " + getMode(),
                 "Address: " + getServerIp() + ":" + getServerPort(),
-                "=================="
+                "======================"
         );
     }
 
