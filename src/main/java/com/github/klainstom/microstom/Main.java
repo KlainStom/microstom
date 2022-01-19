@@ -29,7 +29,7 @@ public class Main {
                     Objects.requireNonNull(Main.class.getClassLoader().getResourceAsStream(START_SCRIPT_FILENAME)),
                     startScriptFile.toPath());
             Runtime.getRuntime().exec("chmod u+x start.sh");
-            System.out.println("Use './start.sh' to start the server.");
+            MinecraftServer.LOGGER.info("Use './start.sh' to start the server.");
             System.exit(0);
         }
 
