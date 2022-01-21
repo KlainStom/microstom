@@ -2,7 +2,6 @@ package com.github.klainstom.microstom;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.minestom.server.MinecraftServer;
 import net.minestom.server.utils.NetworkUtils;
 
 import java.io.*;
