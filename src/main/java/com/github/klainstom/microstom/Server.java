@@ -34,8 +34,6 @@ public class Server {
         }
 
         // Actually start server
-        Settings.read();
-
         MinecraftServer server = MinecraftServer.init();
 
         MinecraftServer.getGlobalEventHandler().addListener(PlayerLoginEvent.class, event -> {
