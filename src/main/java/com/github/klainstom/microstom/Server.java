@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Objects;
 
-public class Main {
+public class Server {
     private static final String START_SCRIPT_FILENAME = "start.sh";
 
     public static void main(String[] args) throws IOException {
@@ -26,7 +26,7 @@ public class Main {
         if (!startScriptFile.isFile()) {
             MinecraftServer.LOGGER.info("Create startup script.");
             Files.copy(
-                    Objects.requireNonNull(Main.class.getClassLoader().getResourceAsStream(START_SCRIPT_FILENAME)),
+                    Objects.requireNonNull(Server.class.getClassLoader().getResourceAsStream(START_SCRIPT_FILENAME)),
                     startScriptFile.toPath());
             Runtime.getRuntime().exec("chmod u+x start.sh");
             MinecraftServer.LOGGER.info("Use './start.sh' to start the server.");
