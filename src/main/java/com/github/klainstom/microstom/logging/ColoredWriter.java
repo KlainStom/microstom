@@ -35,7 +35,7 @@ public class ColoredWriter implements Writer {
             case OFF -> "";
         } + level + "\u001B[0m";
 
-        System.out.printf("[%s] %s > %s\n", dateString, levelString, logEntry.getMessage());
+        System.out.printf("\r[%s] %s > %s\n> ", dateString, levelString, logEntry.getMessage());
     }
 
     @Override
