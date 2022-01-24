@@ -10,19 +10,17 @@
 ![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/KlainStom/microstom/latest?sort=semver&style=flat-square)
 [![GitHub release (latest by SemVer)](https://img.shields.io/github/downloads/KlainStom/microstom/latest/total?style=flat-square)](https://github.com/KlainStom/microstom/releases)
 
-Microstom is a minecraft server based on [Minestom](https://github.com/Minestom/Minestom).
+Microstom is a minecraft server with [Minestom](https://github.com/Minestom/Minestom) as its core.
 
-### Requirements
-- java 17
+Requires Java 17.<br>
+Supports 1.18 and 1.18.1 clients.
 
 ### Features
-- stop/restart command
+- `/stop`,`/end` and `/restart` command
 - Mojang authentication
-- proxy support
-
-Nothing more. Not even a world to join.
-
-Currently, it uses minecraft protocol version 1.18
+- proxy support (BungeeCord and Velocity)
+- no default worlds, generators, ...
+- a colored terminal (at least the log levels)
 
 ### Restarting
 Restarting the server calls the `./start.sh` script.
