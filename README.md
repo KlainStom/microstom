@@ -7,7 +7,7 @@
 [![GitHub all releases](https://img.shields.io/github/downloads/KlainStom/microstom/total?style=flat-square)](https://github.com/KlainStom/microstom/releases)
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/KlainStom/microstom?style=flat-square)](https://github.com/KlainStom/microstom/commits/master)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/w/KlainStom/microstom?style=flat-square)](https://github.com/KlainStom/microstom/graphs/commit-activity)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/w/KlainStom/microstom?style=flat-square)](https://github.com/KlainStom/microstom/pulse)
 [![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/KlainStom/microstom/latest?sort=semver&style=flat-square)](https://github.com/KlainStom/microstom/commits/master)
 [![GitHub release (latest by SemVer)](https://img.shields.io/github/downloads/KlainStom/microstom/latest/total?style=flat-square)](https://github.com/KlainStom/microstom/releases/latest)
 
