@@ -22,6 +22,7 @@ public class RestartCommand extends SimpleCommand {
             new ProcessBuilder("./start.sh").start();
         } catch (IOException e) {
             LOGGER.error("Could not restart server.", e);
+            return false;
         }
         return true;
     }
