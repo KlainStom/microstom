@@ -1,6 +1,7 @@
 package com.github.klainstom.microstom;
 
 import com.github.klainstom.microstom.commands.Commands;
+import com.github.klainstom.microstom.terminal.MicrostomTerminal;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.MinecraftServer;
@@ -61,5 +62,10 @@ public class Server {
 
         server.start(Settings.getServerIp(), Settings.getServerPort());
         Info.printSettingsLines();
+
+        if (!MinecraftServer.isTerminalEnabled() && Settings.isMicrostomTerminal()) {
+            MicrostomTerminal.start();
+            Runtime.getRuntime().addShutdownHook(new Thread(MicrostomTerminal::stop));
+        }
     }
 }
