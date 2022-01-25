@@ -63,7 +63,7 @@ public class Server {
         server.start(Settings.getServerIp(), Settings.getServerPort());
         Info.printSettingsLines();
 
-        if (!MinecraftServer.isTerminalEnabled() && Settings.isMicrostomTerminal()) {
+        if (!Settings.isTerminalDisabled() && Settings.isMicrostomTerminal()) {
             MicrostomTerminal.start();
             Runtime.getRuntime().addShutdownHook(new Thread(MicrostomTerminal::stop));
         }
