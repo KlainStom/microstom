@@ -1,6 +1,7 @@
 package com.github.klainstom.microstom.terminal;
 
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.command.builder.CommandResult;
 import org.jetbrains.annotations.ApiStatus;
 import org.jline.reader.EndOfFileException;
 import org.jline.reader.LineReader;
@@ -36,7 +37,13 @@ public class MicrostomTerminal {
                 try {
                     command = reader.readLine(PROMPT);
                     var commandManager = MinecraftServer.getCommandManager();
-                    commandManager.execute(commandManager.getConsoleSender(), command);
+                    CommandResult result = commandManager.execute(commandManager.getConsoleSender(), command);
+                    switch (result.getType()) {
+                        case UNKNOWN -> print("Unknown command.");
+                        case INVALID_SYNTAX -> print("Invalid syntax: " + result.getInput());
+                        case CANCELLED -> print("Execution got cancelled.");
+                        case SUCCESS -> print("Execution succeeded.");
+                    }
                 } catch (UserInterruptException ignore) {
                 } catch (EndOfFileException e) {
                     return;
