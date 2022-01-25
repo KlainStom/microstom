@@ -15,6 +15,7 @@ public class MicrostomTerminal {
     private static final String PROMPT = "> ";
 
     private static volatile Terminal terminal;
+    private static volatile LineReader reader;
     private static volatile boolean running = false;
 
     @ApiStatus.Internal
@@ -25,7 +26,7 @@ public class MicrostomTerminal {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            LineReader reader = LineReaderBuilder.builder()
+            reader = LineReaderBuilder.builder()
                     .terminal(terminal)
                     .build();
             running = true;
@@ -36,10 +37,7 @@ public class MicrostomTerminal {
                     command = reader.readLine(PROMPT);
                     var commandManager = MinecraftServer.getCommandManager();
                     commandManager.execute(commandManager.getConsoleSender(), command);
-                } catch (UserInterruptException e) {
-                    // Handle Ctrl + C
-                    System.exit(0);
-                    return;
+                } catch (UserInterruptException ignore) {
                 } catch (EndOfFileException e) {
                     return;
                 }
@@ -60,4 +58,10 @@ public class MicrostomTerminal {
             }
         }
     }
+
+    public static void print(String line) {
+        reader.printAbove(line);
+    }
+
+    public static boolean isRunning() { return running; }
 }

@@ -1,5 +1,7 @@
 package com.github.klainstom.microstom.logging;
 
+import com.github.klainstom.microstom.Settings;
+import com.github.klainstom.microstom.terminal.MicrostomTerminal;
 import org.tinylog.Level;
 import org.tinylog.core.LogEntry;
 import org.tinylog.core.LogEntryValue;
@@ -35,7 +37,12 @@ public class ColoredWriter implements Writer {
             case OFF -> "";
         } + level + "\u001B[0m";
 
-        System.out.printf("\r[%s] %s > %s\n> ", dateString, levelString, logEntry.getMessage());
+        if (MicrostomTerminal.isRunning()) {
+            MicrostomTerminal.print(String.format(
+                    "[%s] %s > %s", dateString, levelString, logEntry.getMessage()));
+        } else if (Settings.isMicrostomTerminal())
+            System.out.printf("[%s] %s > %s\n", dateString, levelString, logEntry.getMessage());
+        else System.out.printf("\r[%s] %s > %s\n> ", dateString, levelString, logEntry.getMessage());
     }
 
     @Override
