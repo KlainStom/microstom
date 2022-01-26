@@ -56,8 +56,8 @@ public class MicrostomTerminal {
                         case CANCELLED -> print("Execution got cancelled.");
                         case SUCCESS -> print("Execution succeeded.");
                     }
-                } catch (UserInterruptException ignore) {
-                } catch (EndOfFileException e) {
+                } catch (UserInterruptException | EndOfFileException e) {
+                    System.exit(0);
                     return;
                 }
             }
