@@ -4,7 +4,6 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.command.CommandManager;
 import net.minestom.server.command.builder.CommandResult;
 import org.jetbrains.annotations.ApiStatus;
-
 import org.jline.reader.*;
 import org.jline.reader.impl.DefaultExpander;
 import org.jline.reader.impl.history.DefaultHistory;
@@ -17,6 +16,8 @@ public class MicrostomTerminal {
     private static CommandManager COMMAND_MANAGER;
     private static final String PROMPT = "> ";
 
+    private static volatile Thread terminalThread;
+
     private static volatile Terminal terminal;
     private static volatile LineReader lineReader;
     private static final Highlighter highlighter = new MicrostomHighlighter();
@@ -28,7 +29,7 @@ public class MicrostomTerminal {
     @ApiStatus.Internal
     public static void start() {
         COMMAND_MANAGER = MinecraftServer.getCommandManager();
-        final Thread thread = new Thread(null, () -> {
+        terminalThread = new Thread(() -> {
             try {
                 terminal = TerminalBuilder.terminal();
             } catch (IOException e) {
@@ -61,8 +62,8 @@ public class MicrostomTerminal {
                 }
             }
         }, "Jline");
-        thread.setDaemon(true);
-        thread.start();
+        terminalThread.setDaemon(true);
+        terminalThread.start();
     }
 
     @ApiStatus.Internal
@@ -75,7 +76,6 @@ public class MicrostomTerminal {
                 e.printStackTrace();
             }
         }
-
     }
 
     public static void print(String line) {
