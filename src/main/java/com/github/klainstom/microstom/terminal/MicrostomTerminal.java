@@ -73,6 +73,7 @@ public class MicrostomTerminal {
         MinecraftServer.LOGGER.info("Stop Microstom terminal");
         if (terminal != null) {
             try {
+                terminalThread.interrupt();
                 terminal.close();
             } catch (IOException e) {
                 e.printStackTrace();

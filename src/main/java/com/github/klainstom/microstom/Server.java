@@ -65,7 +65,16 @@ public class Server {
 
         if (!Settings.isTerminalDisabled() && Settings.isMicrostomTerminal()) {
             MicrostomTerminal.start();
-            Runtime.getRuntime().addShutdownHook(new Thread(MicrostomTerminal::stop));
+            new Thread(() -> {
+                while (MinecraftServer.isStarted()) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                MicrostomTerminal.stop();
+            }).start();
         }
     }
 }
