@@ -28,6 +28,7 @@ public class MicrostomTerminal {
 
     @ApiStatus.Internal
     public static void start() {
+        MinecraftServer.LOGGER.info("Start Microstom terminal");
         COMMAND_MANAGER = MinecraftServer.getCommandManager();
         terminalThread = new Thread(() -> {
             try {
@@ -69,6 +70,7 @@ public class MicrostomTerminal {
     @ApiStatus.Internal
     public static void stop() {
         running = false;
+        MinecraftServer.LOGGER.info("Stop Microstom terminal");
         if (terminal != null) {
             try {
                 terminal.close();
