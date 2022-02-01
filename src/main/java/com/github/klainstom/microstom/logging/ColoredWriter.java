@@ -41,7 +41,7 @@ public class ColoredWriter implements Writer {
             MicrostomTerminal.print(String.format(
                     "[%s] %s > %s", dateString, levelString, logEntry.getMessage()));
         } else if (Settings.isMicrostomTerminal())
-            System.out.printf("[%s] %s > %s\n", dateString, levelString, logEntry.getMessage());
+            System.out.printf("\r[%s] %s > %s\n", dateString, levelString, logEntry.getMessage());
         else System.out.printf("\r[%s] %s > %s\n> ", dateString, levelString, logEntry.getMessage());
     }
 
