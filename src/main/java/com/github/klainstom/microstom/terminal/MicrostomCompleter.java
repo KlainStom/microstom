@@ -14,8 +14,6 @@ import java.util.Set;
 public class MicrostomCompleter implements Completer {
     @Override
     public void complete(LineReader reader, ParsedLine line, List<Candidate> candidates) {
-        MinecraftServer.LOGGER.info("Word index {}", line.wordIndex());
-
         if (line.wordIndex() == 0) {
             Set<Command> commands = MinecraftServer.getCommandManager().getDispatcher().getCommands();
             for (Command command : commands) {
