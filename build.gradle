@@ -14,7 +14,7 @@ def displayName = "MicroStom"
 def minestomVersion = "b5cc2c4126064f3a3f6711c0adb96a160dff863a"
 
 group 'com.github.klainstom'
-version '3.0.1'
+version '3.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
