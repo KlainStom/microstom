@@ -13,7 +13,7 @@ import org.jline.terminal.TerminalBuilder;
 import java.io.IOException;
 
 public class MicrostomTerminal {
-    private static CommandManager COMMAND_MANAGER;
+    private static final CommandManager COMMAND_MANAGER = MinecraftServer.getCommandManager();
     private static final String PROMPT = "> ";
 
     private static volatile Thread terminalThread;
@@ -29,7 +29,6 @@ public class MicrostomTerminal {
     @ApiStatus.Internal
     public static void start() {
         MinecraftServer.LOGGER.info("Start Microstom terminal");
-        COMMAND_MANAGER = MinecraftServer.getCommandManager();
         terminalThread = new Thread(() -> {
             try {
                 terminal = TerminalBuilder.terminal();
