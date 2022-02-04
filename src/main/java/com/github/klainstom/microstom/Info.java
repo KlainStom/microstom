@@ -2,20 +2,20 @@ package com.github.klainstom.microstom;
 
 import net.minestom.server.MinecraftServer;
 
-import java.util.List;
-
 public class Info {
-    public static void printLines(List<String> lines) {
-        for (String line : lines) {
-            MinecraftServer.LOGGER.info(line);
-        }
-    }
-
     public static void printVersionLines() {
-        printLines(Versions.getVersionLines());
+        MinecraftServer.LOGGER.info("====== MICROSTOM =====");
+        MinecraftServer.LOGGER.info("Java: " + Runtime.version());
+        MinecraftServer.LOGGER.info("$Name: " + Versions.VERSION);
+        MinecraftServer.LOGGER.info("Minestom: " + Versions.MINESTOM_VERSION);
+        MinecraftServer.LOGGER.info("Protocol: " + MinecraftServer.PROTOCOL_VERSION);
+        MinecraftServer.LOGGER.info("======================");
     }
 
     public static void printSettingsLines() {
-        printLines(Settings.getSettingsLines());
+        MinecraftServer.LOGGER.info("====== SETTINGS ======");
+        MinecraftServer.LOGGER.info("Mode: " + Settings.getMode());
+        MinecraftServer.LOGGER.info("Address: " + Settings.getServerIp() + ":" + Settings.getServerPort());
+        MinecraftServer.LOGGER.info("======================");
     }
 }

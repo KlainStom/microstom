@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import net.minestom.server.utils.NetworkUtils;
 
 import java.io.*;
-import java.util.List;
 
 public class Settings {
     private static final Gson gson = new GsonBuilder()
@@ -35,15 +34,6 @@ public class Settings {
         Writer writer = new FileWriter(settingsFile);
         writer.write(json);
         writer.close();
-    }
-
-    public static List<String> getSettingsLines() {
-        return List.of(
-                "====== SETTINGS ======",
-                "Mode: " + getMode(),
-                "Address: " + getServerIp() + ":" + getServerPort(),
-                "======================"
-        );
     }
 
     private static class SettingsState {
