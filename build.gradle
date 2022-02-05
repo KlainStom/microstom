@@ -10,7 +10,7 @@ plugins {
     id 'java'
 }
 
-def displayName = "MicroStom"
+def displayName = "Microstom"
 def minestomVersion = "b5cc2c4126064f3a3f6711c0adb96a160dff863a"
 
 group 'com.github.klainstom'
