@@ -15,6 +15,8 @@ public class Settings {
 
     private static SettingsState currentSettings = null;
 
+    private static int freePort = 0;
+
     public static void read() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(settingsFile));
@@ -112,8 +114,10 @@ public class Settings {
     public static int getServerPort() {
         int port = Integer.getInteger("server.port", currentSettings.SERVER_PORT);
         if (port == 0) {
+            if (freePort != 0) return freePort;
             try {
                 port = NetworkUtils.getFreePort();
+                freePort = port;
             } catch (IOException e) {
                 e.printStackTrace();
             }
