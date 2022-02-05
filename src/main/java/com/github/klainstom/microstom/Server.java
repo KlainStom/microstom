@@ -19,6 +19,16 @@ public class Server {
     private static final String START_SCRIPT_FILENAME = "start.sh";
 
     public static void main(String[] args) throws IOException {
+        Settings.read();
+        if (Settings.getTps() != null)
+            System.setProperty("minestom.tps", Settings.getTps());
+        if (Settings.getChunkViewDistance() != null)
+            System.setProperty("minestom.chunk-view-distance", Settings.getChunkViewDistance());
+        if (Settings.getEntityViewDistance() != null)
+            System.setProperty("minestom.entity-view-distance", Settings.getEntityViewDistance());
+        if (Settings.isTerminalDisabled() || Settings.isMicrostomTerminal())
+            System.setProperty("minestom.terminal.disabled", "");
+
         Info.printVersionLines();
         if (args.length > 0 && args[0].equalsIgnoreCase("-v")) System.exit(0);
 

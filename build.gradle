@@ -44,7 +44,7 @@ processResources.expand(
 )
 
 shadowJar {
-    manifest.attributes 'Main-Class': 'com.github.klainstom.microstom.OptionsWrapper'
+    manifest.attributes 'Main-Class': 'com.github.klainstom.microstom.Server'
     archiveBaseName.set(displayName)
     archiveClassifier.set('')
     archiveVersion.set(project.version.toString())
