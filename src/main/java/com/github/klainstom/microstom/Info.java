@@ -8,7 +8,7 @@ public class Info {
         MinecraftServer.LOGGER.info("Java: " + Runtime.version());
         MinecraftServer.LOGGER.info("$Name: " + Versions.VERSION);
         MinecraftServer.LOGGER.info("Minestom: " + Versions.MINESTOM_VERSION);
-        MinecraftServer.LOGGER.info("Protocol: " + MinecraftServer.PROTOCOL_VERSION);
+        MinecraftServer.LOGGER.info("Protocol: %d (%s)".formatted(MinecraftServer.PROTOCOL_VERSION, MinecraftServer.VERSION_NAME));
         MinecraftServer.LOGGER.info("======================");
     }
 
