@@ -1,1 +1,2 @@
 com.github.klainstom.microstom.logging.ColoredWriter
+com.github.klainstom.microstom.logging.MicrostomFileWriter
