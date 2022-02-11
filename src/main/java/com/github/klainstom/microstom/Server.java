@@ -74,17 +74,8 @@ public class Server {
         Info.printSettingsLines();
 
         if (!Settings.isTerminalDisabled() && Settings.isMicrostomTerminal()) {
-            MicrostomTerminal.start();
-            new Thread(() -> {
-                while (MinecraftServer.isStarted()) {
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                MicrostomTerminal.stop();
-            }).start();
+            final boolean started = MicrostomTerminal.start();
+            MinecraftServer.LOGGER.info("Microstom terminal running: {}", started);
         }
     }
 }
