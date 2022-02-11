@@ -140,6 +140,7 @@ public class Settings {
     public static String getTps() { return currentSettings.TPS; }
     public static String getChunkViewDistance() { return currentSettings.CHUNK_VIEW_DISTANCE; }
     public static String getEntityViewDistance() { return currentSettings.ENTITY_VIEW_DISTANCE; }
-    public static boolean isTerminalDisabled() { return currentSettings.TERMINAL_DISABLED.getValue(); }
+    public static boolean isTerminalDisabled() { return currentSettings.TERMINAL_DISABLED.getValue()
+            || System.getProperty("microstom.terminal.disabled") != null; }
     public static boolean isMicrostomTerminal() { return currentSettings.MICROSTOM_TERMINAL.getValue(); }
 }
