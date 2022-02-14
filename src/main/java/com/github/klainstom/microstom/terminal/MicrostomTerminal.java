@@ -27,15 +27,11 @@ public class MicrostomTerminal {
     private static volatile boolean running = false;
 
     @ApiStatus.Internal
-    public static void start() {
+    public static boolean start() {
         MinecraftServer.LOGGER.info("Start Microstom terminal");
-        COMMAND_MANAGER = MinecraftServer.getCommandManager();
-        terminalThread = new Thread(() -> {
-            try {
-                terminal = TerminalBuilder.terminal();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (COMMAND_MANAGER == null) COMMAND_MANAGER = MinecraftServer.getCommandManager();
+        try {
+            terminal = TerminalBuilder.terminal();
             lineReader = LineReaderBuilder.builder()
                     .terminal(terminal)
                     .highlighter(highlighter)
@@ -43,28 +39,58 @@ public class MicrostomTerminal {
                     .expander(expander)
                     .history(history)
                     .build();
-            running = true;
 
-            while (running) {
-                String command;
-                try {
-                    command = lineReader.readLine(PROMPT);
-                    if (command.isBlank()) continue;
-                    CommandResult result = COMMAND_MANAGER.execute(COMMAND_MANAGER.getConsoleSender(), command);
-                    switch (result.getType()) {
-                        case UNKNOWN -> print("Unknown command.");
-                        case INVALID_SYNTAX -> print("Invalid syntax: " + result.getInput());
-                        case CANCELLED -> print("Execution got cancelled.");
-                        case SUCCESS -> print("Execution succeeded.");
+            terminalThread = new Thread(() -> {
+                while (running) {
+                    String command;
+                    try {
+                        command = lineReader.readLine(PROMPT);
+                        if (command.isBlank()) continue;
+                        MinecraftServer.LOGGER.info("Console executes command: {}", command);
+                        CommandResult result = COMMAND_MANAGER.execute(COMMAND_MANAGER.getConsoleSender(), command);
+                        switch (result.getType()) {
+                            case UNKNOWN -> print("Unknown command.");
+                            case INVALID_SYNTAX -> print("Invalid syntax: " + result.getInput());
+                            case CANCELLED -> print("Execution got cancelled.");
+                            case SUCCESS -> print("Execution succeeded.");
+                        }
+                    } catch (UserInterruptException e) {
+                        MinecraftServer.LOGGER.info("Terminal user interrupt. Shut down.", e);
+                        MinecraftServer.stopCleanly();
+                        System.exit(0);
+                        break;
+                    } catch (EndOfFileException e) {
+                        MinecraftServer.LOGGER.info("Terminal EOF. Stop console.", e);
+                        MicrostomTerminal.stop();
                     }
-                } catch (UserInterruptException | EndOfFileException e) {
-                    System.exit(0);
-                    return;
                 }
-            }
-        }, "Jline");
-        terminalThread.setDaemon(true);
-        terminalThread.start();
+                running = false;
+            }, "MicrostomTerminal");
+            running = true;
+            terminalThread.setDaemon(true);
+            terminalThread.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        if (running) {
+            Thread stopThread  = new Thread(() -> {
+                while (MinecraftServer.isStarted()) {
+                    if (!isRunning()) return;
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                stop();
+            }, "terminalExit");
+            stopThread.setDaemon(true);
+            stopThread.start();
+        }
+
+        return running;
     }
 
     @ApiStatus.Internal

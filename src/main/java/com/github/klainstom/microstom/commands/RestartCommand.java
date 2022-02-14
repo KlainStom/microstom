@@ -14,14 +14,17 @@ public class RestartCommand extends Command {
         setCondition(((sender, commandString) -> (sender instanceof ServerSender)
                 || (sender instanceof ConsoleSender)
                 || Settings.isAllowPlayerRestart()));
-        setDefaultExecutor((sender, context) -> {
-            try {
-                new ProcessBuilder("./start.sh").start();
-                MinecraftServer.stopCleanly();
-            } catch (IOException e) {
-                if (!(sender instanceof ConsoleSender)) sender.sendMessage("Could not restart server.");
-                LOGGER.error("Could not restart server.", e);
-            }
+        addSyntax((sender, context) -> {
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                try {
+                    new ProcessBuilder("./start.sh").start();
+                    MinecraftServer.LOGGER.info("Start new server.");
+                } catch (IOException e) {
+                    if (!(sender instanceof ConsoleSender)) sender.sendMessage("Could not restart server.");
+                    LOGGER.error("Could not restart server.", e);
+                }
+            }, "RestartHook"));
+            MinecraftServer.stopCleanly();
         });
     }
 }

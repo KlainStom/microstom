@@ -12,6 +12,6 @@ public class ShutdownCommand extends Command {
         setCondition(((sender, commandString) -> (sender instanceof ServerSender)
                 || (sender instanceof ConsoleSender)
                 || Settings.isAllowPlayerShutdown()));
-        setDefaultExecutor(((sender, context) -> MinecraftServer.stopCleanly()));
+        addSyntax(((sender, context) -> MinecraftServer.stopCleanly()));
     }
 }
