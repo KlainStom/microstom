@@ -26,6 +26,3 @@ Supports 1.18 and 1.18.1 clients.
 Restarting the server calls the `./start.sh` script.
 The generated script will start the server with no way to access the console.
 So keep in mind that you will need an extension providing remote access or use tmux/screen in the `start.sh` to access the console.
-
-There is a bug that prevents the server from restarting in some cases. But I have no idea what causes it.
-Read here for more: https://github.com/Minestom/Minestom/discussions/668
