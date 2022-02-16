@@ -13,6 +13,7 @@ import net.minestom.server.extras.velocity.VelocityProxy;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Objects;
 
 public class Server {
@@ -54,6 +55,7 @@ public class Server {
 
         MinecraftServer.getCommandManager().register(Commands.SHUTDOWN);
         MinecraftServer.getCommandManager().register(Commands.RESTART);
+        MinecraftServer.getExtensionManager().setExtensionDataRoot(Path.of("config"));
 
         switch (Settings.getMode()) {
             case OFFLINE:
