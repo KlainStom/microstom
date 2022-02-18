@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.EnumSet;
 import java.util.Map;
 
+// TODO: 15.02.22 replace with rotating file writer, so it behaves more like the vanilla minecraft server
 public class MicrostomFileWriter implements Writer {
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static final DateFormat NAME_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
