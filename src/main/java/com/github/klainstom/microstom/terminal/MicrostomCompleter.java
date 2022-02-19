@@ -15,14 +15,12 @@ public class MicrostomCompleter implements Completer {
     @Override
     public void complete(LineReader reader, ParsedLine line, List<Candidate> candidates) {
         if (line.wordIndex() == 0) {
-            Set<Command> commands = MinecraftServer.getCommandManager().getDispatcher().getCommands();
-            for (Command command : commands) {
-                candidates.addAll(Arrays.stream(command.getNames()).map(Candidate::new).toList());
-            }
+            candidates.addAll(MinecraftServer.getCommandManager().getDispatcher().getCommands().stream()
+                    .map(c -> new Candidate(c.getName())).toList());
         } else {
-            Command command = MinecraftServer.getCommandManager().getCommand(line.words().get(0));
+            Command command = MinecraftServer.getCommandManager().getCommand(line.words().get(line.wordIndex()-1));
             if (command == null) return;
-            candidates.addAll(command.getSyntaxesStrings().stream().map(Candidate::new).toList());
+            candidates.addAll(command.getSubcommands().stream().map(c -> new Candidate(c.getName())).toList());
         }
     }
 }
