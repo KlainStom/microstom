@@ -2,7 +2,7 @@ metadata.format.version = "1.1"
 
 [versions]
 
-minestom = "be100fa5b8a410258e0da2aa4341cc341a0359a6"
+minestom = "62a7346f40ab3236be42f7a86e9a10a6fb2141b9"
 
 # Terminal / Logging
 tinylog = "2.4.1"
