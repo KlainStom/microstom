@@ -7,7 +7,7 @@ plugins {
 var displayName = "Microstom"
 
 group = "com.github.klainstom"
-version = "3.1-SNAPSHOT"
+version = "4.0.0"
 
 dependencies {
     implementation(libs.minestom)
