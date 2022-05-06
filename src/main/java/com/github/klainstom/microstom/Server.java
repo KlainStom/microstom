@@ -30,7 +30,13 @@ public class Server {
         if (Settings.isTerminalDisabled() || Settings.isMicrostomTerminal())
             System.setProperty("minestom.terminal.disabled", "");
 
-        Info.printVersionLines();
+        MinecraftServer.LOGGER.info("====== VERSIONS ======");
+        MinecraftServer.LOGGER.info("Java: " + Runtime.version());
+        MinecraftServer.LOGGER.info("&Name: " + Versions.VERSION);
+        MinecraftServer.LOGGER.info("Minestom: " + Versions.MINESTOM_VERSION);
+        MinecraftServer.LOGGER.info("Supported protocol: %d (%s)".formatted(MinecraftServer.PROTOCOL_VERSION, MinecraftServer.VERSION_NAME));
+        MinecraftServer.LOGGER.info("======================");
+
         if (args.length > 0 && args[0].equalsIgnoreCase("-v")) System.exit(0);
 
         File startScriptFile = new File(START_SCRIPT_FILENAME);
@@ -72,8 +78,10 @@ public class Server {
                 VelocityProxy.enable(Settings.getVelocitySecret());
         }
 
+        MinecraftServer.LOGGER.info("Running in " + Settings.getMode() + " mode.");
+        MinecraftServer.LOGGER.info("Listening on " + Settings.getServerIp() + ":" + Settings.getServerPort());
+
         server.start(Settings.getServerIp(), Settings.getServerPort());
-        Info.printSettingsLines();
 
         if (!Settings.isTerminalDisabled() && Settings.isMicrostomTerminal()) {
             final boolean started = MicrostomTerminal.start();

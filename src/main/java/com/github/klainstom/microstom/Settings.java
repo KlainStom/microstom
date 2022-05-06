@@ -74,8 +74,8 @@ public class Settings {
     public enum RunMode {
         OFFLINE("offline"),
         ONLINE("online"),
-        BUNGEECORD("behind BungeeCord"),
-        VELOCITY("behind Velocity");
+        BUNGEECORD("BungeeCord"),
+        VELOCITY("Velocity");
 
         private final String name;
 
