@@ -2,7 +2,6 @@ package com.github.klainstom.microstom;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.minestom.server.utils.NetworkUtils;
 
 import java.io.*;
 
@@ -14,8 +13,6 @@ public class Settings {
     private static final File settingsFile = new File("micro-settings.json");
 
     private static SettingsState currentSettings = null;
-
-    private static int freePort = 0;
 
     public static void read() {
         try {
@@ -113,15 +110,7 @@ public class Settings {
     }
     public static int getServerPort() {
         int port = Integer.getInteger("server.port", currentSettings.SERVER_PORT);
-        if (port == 0) {
-            if (freePort != 0) return freePort;
-            try {
-                port = NetworkUtils.getFreePort();
-                freePort = port;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        if (port < 1) return 25565;
         return port;
     }
 
