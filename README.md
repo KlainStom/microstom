@@ -13,7 +13,7 @@
 Microstom is a minecraft server with [Minestom](https://github.com/Minestom/Minestom) as its core.
 
 Requires Java 17.<br>
-Supports 1.18 and 1.18.1 clients.
+Supports 1.18.2 clients.
 
 ### Features
 - `/stop`,`/end` and `/restart` command
