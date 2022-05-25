@@ -17,6 +17,8 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Objects;
 
 public class Server {
+    public static final String VERSION = "&version";
+    public static final String MINESTOM_VERSION = "&minestomVersion";
     private static final String START_SCRIPT_FILENAME = "start.sh";
 
     public static void main(String[] args) throws IOException {
@@ -32,8 +34,8 @@ public class Server {
 
         MinecraftServer.LOGGER.info("====== VERSIONS ======");
         MinecraftServer.LOGGER.info("Java: " + Runtime.version());
-        MinecraftServer.LOGGER.info("&Name: " + Versions.VERSION);
-        MinecraftServer.LOGGER.info("Minestom: " + Versions.MINESTOM_VERSION);
+        MinecraftServer.LOGGER.info("&Name: " + VERSION);
+        MinecraftServer.LOGGER.info("Minestom: " + MINESTOM_VERSION);
         MinecraftServer.LOGGER.info("Supported protocol: %d (%s)".formatted(MinecraftServer.PROTOCOL_VERSION, MinecraftServer.VERSION_NAME));
         MinecraftServer.LOGGER.info("======================");
 
