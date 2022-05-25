@@ -1,7 +1,6 @@
 package com.github.klainstom.microstom;
 
 import com.github.klainstom.microstom.commands.Commands;
-import com.github.klainstom.microstom.terminal.MicrostomTerminal;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.MinecraftServer;
@@ -27,7 +26,7 @@ public class Server {
             System.setProperty("minestom.chunk-view-distance", Settings.getChunkViewDistance());
         if (Settings.getEntityViewDistance() != null)
             System.setProperty("minestom.entity-view-distance", Settings.getEntityViewDistance());
-        if (Settings.isTerminalDisabled() || Settings.isMicrostomTerminal())
+        if (Settings.isTerminalDisabled())
             System.setProperty("minestom.terminal.disabled", "");
 
         MinecraftServer.LOGGER.info("====== VERSIONS ======");
@@ -82,10 +81,5 @@ public class Server {
         MinecraftServer.LOGGER.info("Listening on " + Settings.getServerIp() + ":" + Settings.getServerPort());
 
         server.start(Settings.getServerIp(), Settings.getServerPort());
-
-        if (!Settings.isTerminalDisabled() && Settings.isMicrostomTerminal()) {
-            final boolean started = MicrostomTerminal.start();
-            MinecraftServer.LOGGER.info("Microstom terminal running: {}", started);
-        }
     }
 }
