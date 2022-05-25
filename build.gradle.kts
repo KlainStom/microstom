@@ -11,9 +11,6 @@ version = "5.0.0-SNAPSHOT"
 
 dependencies {
     implementation(libs.minestom)
-
-    compileOnly(libs.bundles.logging)
-    compileOnly(libs.bundles.terminal)
 }
 
 tasks {
