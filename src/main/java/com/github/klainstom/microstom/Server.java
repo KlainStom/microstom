@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Objects;
 
 public class Server {
@@ -39,8 +40,9 @@ public class Server {
         if (args.length > 0 && args[0].equalsIgnoreCase("-v")) System.exit(0);
 
         File startScriptFile = new File(START_SCRIPT_FILENAME);
-        if (startScriptFile.isDirectory()) MinecraftServer.LOGGER.warn("Can't create startup script!");
-        if (!startScriptFile.isFile()) {
+        var attributes = Files.readAttributes(startScriptFile.toPath(), BasicFileAttributes.class);
+        if (attributes.isDirectory()) MinecraftServer.LOGGER.warn("Can't create startup script!");
+        if (!attributes.isRegularFile()) {
             MinecraftServer.LOGGER.info("Create startup script.");
             Files.copy(
                     Objects.requireNonNull(Server.class.getClassLoader().getResourceAsStream(START_SCRIPT_FILENAME)),
