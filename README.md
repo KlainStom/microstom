@@ -51,7 +51,7 @@ This generates a `start.sh` script and a settings file with these default values
   "TPS": null, // default 20
   "CHUNK_VIEW_DISTANCE": null, // default 8
   "ENTITY_VIEW_DISTANCE": null, // default 5
-  "TERMINAL_DISABLED": "FALSE" // default false
+  "TERMINAL_DISABLED": false // default false
 }
 ```
 You have to restart the server for changes in there to take effect.

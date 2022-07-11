@@ -49,7 +49,7 @@ public class Settings {
         private final String TPS;
         private final String CHUNK_VIEW_DISTANCE;
         private final String ENTITY_VIEW_DISTANCE;
-        private final Bool TERMINAL_DISABLED;
+        private final boolean TERMINAL_DISABLED;
 
         private SettingsState() {
             this.SERVER_IP = "localhost";
@@ -64,7 +64,7 @@ public class Settings {
             this.TPS = null;
             this.CHUNK_VIEW_DISTANCE = null;
             this.ENTITY_VIEW_DISTANCE = null;
-            this.TERMINAL_DISABLED = Bool.FALSE;
+            this.TERMINAL_DISABLED = false;
         }
 
     }
@@ -84,20 +84,6 @@ public class Settings {
         @Override
         public String toString() {
             return this.name;
-        }
-    }
-
-    private enum Bool {
-        TRUE(true), FALSE(false);
-
-        private final boolean value;
-
-        Bool(boolean value) {
-            this.value = value;
-        }
-
-        public boolean getValue() {
-            return value;
         }
     }
 
@@ -127,5 +113,5 @@ public class Settings {
     public static String getTps() { return currentSettings.TPS; }
     public static String getChunkViewDistance() { return currentSettings.CHUNK_VIEW_DISTANCE; }
     public static String getEntityViewDistance() { return currentSettings.ENTITY_VIEW_DISTANCE; }
-    public static boolean isTerminalDisabled() { return currentSettings.TERMINAL_DISABLED.getValue(); }
+    public static boolean isTerminalDisabled() { return currentSettings.TERMINAL_DISABLED; }
 }
