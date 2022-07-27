@@ -3,6 +3,7 @@ package com.github.klainstom.microstom;
 import com.github.klainstom.microstom.commands.Commands;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.minestom.server.Git;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.event.player.PlayerLoginEvent;
 import net.minestom.server.extras.MojangAuth;
@@ -17,7 +18,6 @@ import java.util.Objects;
 
 public class Server {
     public static final String VERSION = "&version";
-    public static final String MINESTOM_VERSION = "&minestomVersion";
     private static final String START_SCRIPT_FILENAME = "start.sh";
 
     public static void main(String[] args) throws IOException {
@@ -34,7 +34,9 @@ public class Server {
         MinecraftServer.LOGGER.info("====== VERSIONS ======");
         MinecraftServer.LOGGER.info("Java: " + Runtime.version());
         MinecraftServer.LOGGER.info("&Name: " + VERSION);
-        MinecraftServer.LOGGER.info("Minestom: " + MINESTOM_VERSION);
+        MinecraftServer.LOGGER.info("Minestom COMMIT: " + Git.COMMIT);
+        MinecraftServer.LOGGER.info("Minestom BRANCH: " + Git.BRANCH);
+        MinecraftServer.LOGGER.info("Minestom Fork: " + Git.GROUP + ":" + Git.ARTIFACT);
         MinecraftServer.LOGGER.info("Supported protocol: %d (%s)".formatted(MinecraftServer.PROTOCOL_VERSION, MinecraftServer.VERSION_NAME));
         MinecraftServer.LOGGER.info("======================");
 
