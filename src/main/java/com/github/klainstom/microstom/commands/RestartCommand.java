@@ -11,7 +11,6 @@ public class RestartCommand extends Command {
     public RestartCommand() {
         super("restart");
         setCondition((sender, commandString) -> (sender instanceof ServerSender)
-                || (sender instanceof ConsoleSender)
                 || sender.hasPermission(Permissions.RESTART));
         addSyntax((sender, context) -> {
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {

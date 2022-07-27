@@ -61,8 +61,12 @@ public class Server {
                 event.getPlayer().kick(Component.text("There is no instance available!", NamedTextColor.RED));
         });
 
-        MinecraftServer.getCommandManager().register(Commands.SHUTDOWN);
-        MinecraftServer.getCommandManager().register(Commands.RESTART);
+        var commandManager = MinecraftServer.getCommandManager();
+        var consoleSender = commandManager.getConsoleSender();
+        commandManager.register(Commands.SHUTDOWN);
+        commandManager.register(Commands.RESTART);
+        consoleSender.addPermission(Permissions.SHUTDOWN);
+        consoleSender.addPermission(Permissions.RESTART);
         MinecraftServer.getExtensionManager().setExtensionDataRoot(Path.of("config"));
 
         switch (Settings.getMode()) {
