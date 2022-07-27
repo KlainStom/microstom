@@ -13,6 +13,7 @@ public class RestartCommand extends Command {
         super("restart");
         setCondition(((sender, commandString) -> (sender instanceof ServerSender)
                 || (sender instanceof ConsoleSender)
+                || sender.hasPermission(Permissions.RESTART)
                 || Settings.isAllowPlayerRestart()));
         addSyntax((sender, context) -> {
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
