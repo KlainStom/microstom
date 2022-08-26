@@ -8,7 +8,7 @@ import java.io.*;
 public class Settings {
     private static final Gson gson = new GsonBuilder()
             .setPrettyPrinting()
-            .serializeNulls()
+            //.serializeNulls()
             .create();
     private static final File settingsFile = new File("micro-settings.json");
 
