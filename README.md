@@ -54,7 +54,7 @@ This generates a `start.sh` script and a settings file with these default values
 ```
 You have to restart the server for changes in there to take effect.
 
-Note that this server only supports 1.18.2 clients at version 5.0.0 and 1.18/1.18.1 at version 4.0.0. To allow other/multiple versions to connect you need to use a proxy with plugins like ViaVersion.
+Note that this server only supports 1.19.2 clients on version 6.0.0, 1.18.2 clients on version 5.0.0 and 1.18/1.18.1 on version 4.0.0. To allow other/multiple versions to connect you need to use a proxy with plugins like ViaVersion.
 
 ## Restarting
 Restarting the server calls the `./start.sh` script.
