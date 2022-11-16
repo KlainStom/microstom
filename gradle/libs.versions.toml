@@ -2,7 +2,7 @@ metadata.format.version = "1.1"
 
 [versions]
 
-minestom = "f5f323fef9"
+minestom = "1a013728fd"
 
 # Gradle plugins
 blossom = "1.3.0"
