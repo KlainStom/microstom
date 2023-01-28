@@ -4,6 +4,7 @@ import com.github.klainstom.microstom.commands.Commands;
 import com.github.klainstom.microstom.commands.Permissions;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.minestom.server.Git;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.event.player.PlayerLoginEvent;
 import net.minestom.server.extras.MojangAuth;
@@ -18,7 +19,6 @@ import java.util.Objects;
 
 public class Server {
     public static final String VERSION = "&version";
-    public static final String MINESTOM_VERSION = "&minestomVersion";
     private static final String START_SCRIPT_FILENAME = "start.sh";
 
     public static void main(String[] args) throws IOException {
@@ -32,12 +32,14 @@ public class Server {
         if (Settings.isTerminalDisabled())
             System.setProperty("minestom.terminal.disabled", "");
 
-        MinecraftServer.LOGGER.info("====== VERSIONS ======");
-        MinecraftServer.LOGGER.info("Java: " + Runtime.version());
-        MinecraftServer.LOGGER.info("&Name: " + VERSION);
-        MinecraftServer.LOGGER.info("Minestom: " + MINESTOM_VERSION);
-        MinecraftServer.LOGGER.info("Supported protocol: %d (%s)".formatted(MinecraftServer.PROTOCOL_VERSION, MinecraftServer.VERSION_NAME));
-        MinecraftServer.LOGGER.info("======================");
+        if (! (args.length > 0 && args[0].equalsIgnoreCase("-q"))) {
+            MinecraftServer.LOGGER.info("====== VERSIONS ======");
+            MinecraftServer.LOGGER.info("Java: " + Runtime.version());
+            MinecraftServer.LOGGER.info("&Name: " + VERSION);
+            MinecraftServer.LOGGER.info("Minestom commit: " + Git.commit());
+            MinecraftServer.LOGGER.info("Supported protocol: %d (%s)".formatted(MinecraftServer.PROTOCOL_VERSION, MinecraftServer.VERSION_NAME));
+            MinecraftServer.LOGGER.info("======================");
+        }
 
         if (args.length > 0 && args[0].equalsIgnoreCase("-v")) System.exit(0);
 
