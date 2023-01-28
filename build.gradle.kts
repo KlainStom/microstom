@@ -15,11 +15,8 @@ dependencies {
 
 tasks {
     blossom {
-        replaceToken("&NAME", displayName.toUpperCase())
         replaceToken("&Name", displayName)
-        replaceToken("&name", displayName.toLowerCase())
         replaceToken("&version", version)
-        replaceToken("&minestomVersion", libs.versions.minestom.get())
     }
 
     processResources {
