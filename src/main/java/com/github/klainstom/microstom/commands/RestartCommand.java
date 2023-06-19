@@ -12,7 +12,7 @@ public class RestartCommand extends Command {
         super("restart");
         setCondition((sender, commandString) -> (sender instanceof ServerSender)
                 || sender.hasPermission(Permissions.RESTART));
-        addSyntax((sender, context) -> {
+        setDefaultExecutor((sender, context) -> {
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 try {
                     new ProcessBuilder("./start.sh").start();

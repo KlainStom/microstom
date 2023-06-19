@@ -9,6 +9,6 @@ public class ShutdownCommand extends Command {
         super("shutdown", "end", "stop");
         setCondition((sender, commandString) -> (sender instanceof ServerSender)
                 || sender.hasPermission(Permissions.SHUTDOWN));
-        addSyntax(((sender, context) -> MinecraftServer.stopCleanly()));
+        setDefaultExecutor((sender, context) -> MinecraftServer.stopCleanly());
     }
 }
